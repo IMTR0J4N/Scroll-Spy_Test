@@ -43,6 +43,7 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     font-size: 3rem;
 }
 
@@ -70,4 +71,10 @@ section:nth-child(4) {
     section {
         height: 300vh;
     }
+}
+
+.parallax {
+    background: url("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg") fixed no-repeat;
+    height: 200px;
+    width: 80%;
 }
