@@ -1,20 +1,19 @@
 import '../css/style.css';
 import '../css/reset.css';
 
-const ratio = .6
 const spies = document.querySelectorAll('[data-spy]')
 
 let observer = null
 
 const activate = (elem) => {
   const id = elem.getAttribute('id')
-  const anchor = document.querySelector(`a[href="#${id}"]`)
+  const anchor = document.querySelector(`li > a[href="#${id}"]`)
+  console.log(anchor);
   if (anchor === null) {
     return null
   }
-  anchor.parentElement.parentElement
-    .querySelectorAll('.active')
-    .forEach(node => console.log(node))
+  const anchorsActive = document.querySelectorAll(`li > a.active`)
+    .forEach(node => node.classList.remove('active'))
   anchor.classList.add('active')
 }
 
@@ -30,10 +29,8 @@ const observe = (elems) => {
     if(observer !== null) {
         elems.forEach(elem => observer.unobserve(elem))
     }
-
-    const y = Math.round(window.innerHeight * ratio)
     observer = new IntersectionObserver(callback, {
-        rootMargin: `-${window.innerHeight - y - 1}px 0px -${y}px 0px`
+        rootMargin: `-50% 0px`
     })
     spies.forEach((spy) => {
         observer.observe(spy)
